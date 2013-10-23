@@ -1,0 +1,23 @@
+{
+  "formatVersion" : 1,
+  "passTypeIdentifier" : "pass.com.example",
+  "serialNumber" : "123456",
+  "webServiceURL" : "https://example.com/passes/",
+  "authenticationToken" : "dummyfasfhauefhwiefhaso",
+  "teamIdentifier" : "J5FJ25DJHS",
+  "barcode" : {
+    "altText": "1234567890",
+    "message" : "1234567890",
+    "format" : "PKBarcodeFormatQR",
+    "messageEncoding" : "iso-8859-1"
+  },
+  "organizationName" : "Example corp.",
+  "description" : "Membership card",
+  "logoText" : "Your logo here",
+  "foregroundColor" : "rgb(0, 0, 0)",
+  "backgroundColor" : "rgb(255, 255, 255)",
+  "eventTicket" : {
+    "primaryFields" : [],
+    "secondaryFields" : []
+  }
+}

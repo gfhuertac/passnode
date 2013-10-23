@@ -1,0 +1,19 @@
+{
+  "name": "passnode",
+  "description": "An apple's passbook generator",
+  "version": "0.1.0",
+  "keywords": [
+    "passbook"
+  ],
+  "maintainers": [
+    {
+      "name": "Gonzalo Huerta-Canepa",
+      "email": "gonzalo@huerta.cl",
+      "web": "http://gonzalo.huerta.cl"
+    }
+  ],
+  "dependencies": {
+    "adm-zip": "*",
+    "node-uuid": "*"
+  }
+}

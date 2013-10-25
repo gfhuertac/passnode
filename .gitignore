@@ -16,6 +16,7 @@ node_modules
 
 original
 *.pem
+*.p12
 *.cer
 *.crt
 *.key

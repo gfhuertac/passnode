@@ -1,4 +1,5 @@
-var AdmZip = require('adm-zip');
+var archiver = require('archiver');
+var BufferStream = require('bufferstream')
 var fs = require('fs');
 var util = require('util');
 var uuid = require('node-uuid');
@@ -61,25 +62,40 @@ var loadTemplate = function(templateLocation, callback) {
 */
 var createPassbook = function(contents, data, callback) {
   var pass = JSON.parse(contents['pass.json'].toString('utf8'));
-  pass['serialNumber'] = uuid.v4();
+  //pass['serialNumber'] = uuid.v4();
   merge(pass, data);
   contents['pass.json'] = new Buffer(JSON.stringify(pass), 'utf8');
 
-  var zip = new AdmZip();
+  var zip = archiver('zip');
+  var output = new BufferStream({encoding:'utf8', size:'flexible'});
+
+  zip.on('error', callback);
+  output.on('close', function() {
+    console.log('Done zipping file');
+    callback(undefined, output.buffer);
+  });
+
+  zip.pipe(output);
+
   for (var name in contents) {
-    zip.addFile(name, contents[name]);
+    zip.append(contents[name], {name: name});
   }
 
   var manifest = JSON.stringify(man.createManifest(contents));
-  zip.addFile('manifest.json', new Buffer(manifest));
+  zip.append(new Buffer(manifest), {name:'manifest.json'});
 
   sig.createSignature(manifest, options, function(error, signature) {
     if (error) {
       callback(error);
     } else {
-      zip.addFile('signature', new Buffer(signature.toString('binary')));
-      var zipdata = zip.toBuffer();
-      callback(undefined, zipdata);
+      var sigfile = fs.createReadStream(signature);
+      zip.append(sigfile,{name:'signature'}); //new Buffer(signature.toString(),'binary')
+      zip.finalize(function(error, bytes){
+        if (error) {
+          callback(error);
+        }
+        fs.unlinkSync(signature);
+      });
     }
   });
 };

@@ -24,7 +24,7 @@ var passdata = {
 };
 
 console.log('Starting...');
-passnode.credentials('../keys/pass.pem','../keys/wwdr.pem','../keys/private.key',undefined, function(error){
+passnode.credentials('../keys/certificate.pem','../keys/wwdr.pem','../keys/key.pem','pass:pass', function(error){
   if (error) {
     console.log('Error loading the credentials ' + error);
     return;
@@ -41,8 +41,6 @@ passnode.credentials('../keys/pass.pem','../keys/wwdr.pem','../keys/private.key'
         console.log('Error creating the package ' + error);
         return;
       }
-//      console.log(pkgdata);
-//      return;
       passnode.save(pkgdata, 'sample.pkpass', function(error){
         if (error) {
           console.log('Error saving the file ' + error);

@@ -9,7 +9,7 @@ Based on [passbook-server](https://bitbucket.org/tetsuo/passbook-server).
 
 ## Certificate Request
 
-If you do not have a certificate for passes, then you need to follow these steps:
+If you do not have a certificate for passes, then you need to follow these steps. If you do have MacOSX, then maybe it is better to follows [these instructions](http://developer.xtify.com/display/APIs/Creating+Your+Passbook+Certificate)
 
 1. Create a private key and a certificate signing request for passes:
 ```

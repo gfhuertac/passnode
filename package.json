@@ -1,7 +1,7 @@
 {
   "name": "passnode",
   "description": "An apple's passbook generator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": [
     "passbook"
   ],
@@ -13,7 +13,9 @@
     }
   ],
   "dependencies": {
-    "adm-zip": "*",
+    "archiver": "git://github.com/ctalkington/node-archiver.git",
+    "bufferstream": "0.6.x",
+    "buffertools": "*",
     "node-uuid": "*"
   }
 }

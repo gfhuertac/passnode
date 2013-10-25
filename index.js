@@ -62,7 +62,7 @@ var loadTemplate = function(templateLocation, callback) {
 */
 var createPassbook = function(contents, data, callback) {
   var pass = JSON.parse(contents['pass.json'].toString('utf8'));
-  //pass['serialNumber'] = uuid.v4();
+  pass['serialNumber'] = uuid.v4();
   merge(pass, data);
   contents['pass.json'] = new Buffer(JSON.stringify(pass), 'utf8');
 

@@ -1,7 +1,7 @@
 {
   "name": "passnode",
   "description": "An apple's passbook generator",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "keywords": [
     "passbook"
   ],
